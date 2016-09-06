@@ -94,8 +94,8 @@ def main(speech_file):
     # [END run_application]
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-#agi = AGI()
-#agi.answer()
-#agi.verbose("python agi started")
-#agi.verbose(main(audiotest))
-print(main(audiotest))
+agi = AGI()
+agi.answer()
+agi.verbose("python agi started")
+agi.verbose(agi.main(audiotest))
+#print(main(audiotest))
