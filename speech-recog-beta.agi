@@ -54,7 +54,6 @@ def main(speech_file):
     Args:
         speech_file: the name of the audio file.
     """
-    agi.verbose("main started")
     # [START construct_request]
     with open(speech_file, 'rb') as speech:
         # Base64 encode the binary audio file for inclusion in the JSON
@@ -82,7 +81,7 @@ def main(speech_file):
     response = service_request.execute()
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
-    ganswer = json.dumps(response, ensure_ascii=False)
+    return json.dumps(response, ensure_ascii=False)
     # [END send_request]
 
 # [START run_application]
@@ -98,10 +97,4 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-main(audiotest)
-agi.verbose(ganswer)
-
-#if __name__ == '__main__':
-    #agi = AGI()
-    #agi.answer()
-    #agi.verbose("python agi started")
+agi.verbose(main(audiotest))
