@@ -95,7 +95,7 @@ def main(speech_file):
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     #agi = AGI()
     #agi.answer()
     #agi.verbose("python agi started")
