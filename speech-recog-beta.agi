@@ -21,6 +21,7 @@ import base64
 import json
 
 import os
+import time
 from asterisk.agi import *
 
 from googleapiclient import discovery
@@ -80,6 +81,7 @@ def main(speech_file):
     # [END construct_request]
     # [START send_request]
     response = service_request.execute()
+    time.sleep( 5 )
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
     agi.verbose(json.dumps(response, ensure_ascii=False))
