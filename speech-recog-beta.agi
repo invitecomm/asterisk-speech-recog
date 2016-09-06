@@ -123,7 +123,7 @@ response = service_request.execute()
 #j = json.loads(main(audiotest))
 #call_data = main(audiotest)
 #agi.verbose(call_data)
-transcript = json.dumps(response["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False)
+with json.dumps(response["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False) as transcript
 agi.verbose(transcript)
 #print(transcript)
 
