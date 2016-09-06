@@ -95,9 +95,9 @@ def main(speech_file):
     # [END run_application]
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-agi = AGI()
-agi.answer()
-agi.verbose("python agi started")
+#agi = AGI()
+#agi.answer()
+#agi.verbose("python agi started")
 open(audiotest, 'rb') as speech
 speech_content = base64.b64encode(speech.read())
 service = get_speech_service()
@@ -124,8 +124,8 @@ response = service_request.execute()
 #call_data = main(audiotest)
 #agi.verbose(call_data)
 transcript = json.dumps(response)["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False)
-agi.verbose(transcript)
-
+#agi.verbose(transcript)
+print(transcript)
 
 
 
