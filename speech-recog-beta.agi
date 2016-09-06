@@ -99,7 +99,7 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #agi.verbose("python agi started")
 #agi.verbose("python agi processing")
 #j = json.loads(jsonStr)
-call_data = main(audiotest)['results']
+#call_data = main(audiotest)
 #agi.verbose(call_data)
 
-print(call_data)
+print(main(audiotest))
