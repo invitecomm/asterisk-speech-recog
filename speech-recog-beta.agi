@@ -81,7 +81,8 @@ def main(speech_file):
     response = service_request.execute()
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
-    return json.dumps(response, ensure_ascii=False)
+    #return json.dumps(response, ensure_ascii=False)
+    return response
     # [END send_request]
 
 # [START run_application]
@@ -98,8 +99,8 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #agi.answer()
 #agi.verbose("python agi started")
 #agi.verbose("python agi processing")
-#j = json.loads(jsonStr)
+j = json.loads(main(audiotest)
 #call_data = main(audiotest)
 #agi.verbose(call_data)
 
-print(main(audiotest)[1])
+print(j['results'])
