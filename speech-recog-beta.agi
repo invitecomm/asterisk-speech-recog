@@ -29,9 +29,9 @@ from oauth2client.client import GoogleCredentials
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/google_voice_api.json'
 
-agi = AGI()
-agi.answer()
-agi.verbose("python agi started")
+#agi = AGI()
+#agi.answer()
+#agi.verbose("python agi started")
 
 # [START authenticating]
 DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
