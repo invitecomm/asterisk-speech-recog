@@ -98,11 +98,32 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
+open(audiotest, 'rb') as speech
+speech_content = base64.b64encode(speech.read())
+service = get_speech_service()
+service_request = service.speech().syncrecognize(
+    body={
+        'config': {
+        # There are a bunch of config options you can specify. See
+        # https://goo.gl/EPjAup for the full list.
+        'encoding': 'MULAW',  # raw 16-bit signed LE samples
+        'sampleRate': 8000,  # 16 khz
+        # See https://goo.gl/DPeVFW for a list of supported languages.
+        'languageCode': 'en-US',  # a BCP-47 language tag 
+        # Working with: en-US/ja-JP
+        },
+        'audio': {
+            'content': speech_content.decode('UTF-8')
+        }
+    })
+response = service_request.execute()
+            
+
 #agi.verbose("python agi processing")
 #j = json.loads(main(audiotest))
 #call_data = main(audiotest)
 #agi.verbose(call_data)
-transcript = json.dumps(main(audiotest)["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False)
+transcript = json.dumps(response)["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False)
 agi.verbose(transcript)
 
 
