@@ -80,7 +80,7 @@ def main(speech_file):
     # [START send_request]
     response = service_request.execute()
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
-     print(json.dumps(response, ensure_ascii=False))
+    print(json.dumps(response, ensure_ascii=False))
     #agi.verbose(json.dumps(response, ensure_ascii=False))
     # [END send_request]
 
