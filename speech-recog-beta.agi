@@ -19,12 +19,15 @@ processing."""
 import argparse
 import base64
 import json
+import os
 
 from asterisk.agi import *
 from googleapiclient import discovery
 import httplib2
 from oauth2client.client import GoogleCredentials
 # [END import_libraries]
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/google_voice_api.json'
 
 agi = AGI()
 agi.answer()
@@ -66,10 +69,11 @@ def main(speech_file):
             'config': {
                 # There are a bunch of config options you can specify. See
                 # https://goo.gl/EPjAup for the full list.
-                'encoding': 'LINEAR16',  # raw 16-bit signed LE samples
-                'sampleRate': 16000,  # 16 khz
+                'encoding': 'MULAW',  # raw 16-bit signed LE samples
+                'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'en-US',  # a BCP-47 language tag
+                'languageCode': 'en-US',  # a BCP-47 language tag 
+                # Working with: en-US/ja-JP
             },
             'audio': {
                 'content': speech_content.decode('UTF-8')
@@ -78,7 +82,8 @@ def main(speech_file):
     # [END construct_request]
     # [START send_request]
     response = service_request.execute()
-    print(json.dumps(response))
+    # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
+    print(json.dumps(response, ensure_ascii=False))
     # [END send_request]
 
 # [START run_application]
