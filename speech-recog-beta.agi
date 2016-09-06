@@ -98,7 +98,7 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #agi = AGI()
 #agi.answer()
 #agi.verbose("python agi started")
-with open(audiotest, 'rb') as speech
+speech = open(audiotest, 'rb')
 speech_content = base64.b64encode(speech.read())
 service = get_speech_service()
 service_request = service.speech().syncrecognize(
