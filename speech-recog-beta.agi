@@ -97,5 +97,7 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-agi.verbose(agi.main(audiotest))
+agi.verbose(main(audiotest))
+agi.verbose("python agi END")
+
 #print(main(audiotest))
