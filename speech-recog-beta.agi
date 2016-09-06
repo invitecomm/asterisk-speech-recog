@@ -102,4 +102,4 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #call_data = main(audiotest)
 #agi.verbose(call_data)
 
-print(main(audiotest))
+print(main(audiotest)['results'])
