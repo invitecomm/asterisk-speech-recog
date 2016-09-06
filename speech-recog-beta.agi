@@ -102,4 +102,4 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #j = json.loads(main(audiotest))
 #call_data = main(audiotest)
 #agi.verbose(call_data)
-print(json.dumps(main(audiotest)["results"][0]["alternatives"], ensure_ascii=False))
+print(json.dumps(main(audiotest)["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False))
