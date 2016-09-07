@@ -108,7 +108,7 @@ offset = '0'
 silence = 's=5'
 agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
 # agi.record_file((filename), (format))
-agi.verbose(temp.name, '.ulaw')
+agi.verbose(temp.name + '.ulaw')
 agi.verbose(filename)
 
 
