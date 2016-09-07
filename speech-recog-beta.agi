@@ -135,7 +135,7 @@ res = response_data['results'][0]['alternatives'][0]['transcript']
 #print('%s' % res)
 
 #res = 
-agi.verbose('PYTHON SUCKS: %s' % res)
+agi.verbose('PYTHON SUCKS: %s' % 'really sucks')
 
 #agi.verbose(text[0])
 #print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
