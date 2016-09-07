@@ -105,9 +105,9 @@ def main(speech_file):
 
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
-#agi = AGI()
-#agi.answer()
-#agi.verbose("python agi started")
+agi = AGI()
+agi.answer()
+agi.verbose("python agi started")
 
 response_data = main(audiotest)
 
@@ -130,8 +130,10 @@ for result in response_data['results'][0]['alternatives']:
 	conf.append(result['confidence'])  
 	text.append(result['transcript'])
 
-print(text[0])
+#print(text[0])
 #print(text[1])
+
+agi.verbose(text[0])
             
 
 #agi.verbose("python agi processing")
