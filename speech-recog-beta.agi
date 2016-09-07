@@ -120,14 +120,17 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 
 #print(json.dumps(response_data, ensure_ascii=False))
 
+conf = []
+text = []
+
 for idx,result in enumerate(response_data['results'][0]['alternatives']):
     #print(idx)
     #print(result["confidence"])
     #print(result["transcript"])
-	foox[idx]=result["confidence"]    
-	fooy[idx]=result["transcript"]
+	conf[idx]=result['confidence']    
+	text[idx]=result['transcript']
 
-print(foox[0])
+print(text[0])
             
 
 #agi.verbose("python agi processing")
