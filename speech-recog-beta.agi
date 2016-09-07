@@ -63,7 +63,7 @@ def main(speech_file):
         # Base64 encode the binary audio file for inclusion in the JSON
         # request.
         speech_content = base64.b64encode(speech.read())
-	agi.stream_file('/var/lib/asterisk/sounds/en/one-moment-please')
+	agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
 	#agi.stream_file('/var/lib/asterisk/moh/macroform-cold_day')
     service = get_speech_service()
     service_request = service.speech().syncrecognize(
@@ -74,7 +74,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'en-US',  # a BCP-47 language tag 
+                'languageCode': 'ja-JP',  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
             },
             'audio': {
