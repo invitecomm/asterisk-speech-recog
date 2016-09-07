@@ -83,7 +83,7 @@ def main(speech_file):
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
-    #foo = 'nothing to see here'
+    foo = 'nothing to see here'
     return foo
     # [END send_request]
 
@@ -117,6 +117,7 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #agi.verbose(main(audiotest))
 print('Before')
 #print(t.join())
+print(main(audiotest))
 print('After')
 
 
