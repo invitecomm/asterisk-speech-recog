@@ -97,7 +97,7 @@ def main(speech_file):
     # [END run_application]
     
 def zippo(junk):
-    #time.sleep(1.0)
+    time.sleep(1.0)
 	return junk
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
