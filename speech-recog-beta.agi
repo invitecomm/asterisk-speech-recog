@@ -111,12 +111,12 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #call_data = main(audiotest)
 #agi.wait_for_digit(2000)
 
-t = threading.Thread(target=main, args=audiotest)
-t.start()
+#t = threading.Thread(target=main, args=audiotest)
+#t.start()
 #agi.verbose(t.join())
 #agi.verbose(main(audiotest))
 print('Before')
-print(t.join())
+#print(t.join())
 print('After')
 
 
