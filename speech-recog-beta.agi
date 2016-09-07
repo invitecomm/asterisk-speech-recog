@@ -92,7 +92,7 @@ def main(speech_file):
 # [START run_application]
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
-temp = tempfile.NamedTemporaryFile(suffix='.ulaw')
+temp = tempfile.NamedTemporaryFile()
 
 agi = AGI()
 agi.answer()
@@ -109,7 +109,7 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 # agi.record_file((filename), (format))
 
 
-response_data = main(temp.name)
+response_data = main(temp.name,'.ulaw')
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
 logging.debug(json.dumps(response_data, ensure_ascii=False))
@@ -124,7 +124,7 @@ for result in response_data['results'][0]['alternatives']:
 agi.verbose(text[0])
 
 #agi.verbose('temp:', temp)
-#agi.verbose('temp.name:', temp.name)
+agi.verbose(temp.name, '.ulaw')
 
 agi.verbose('python agi ended')
 
