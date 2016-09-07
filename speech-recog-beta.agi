@@ -118,7 +118,7 @@ response_data = main(audiotest)
 
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
-logging.debug(json.dumps(response_data, ensure_ascii=True))
+logging.debug(json.dumps(response_data, ensure_ascii=False))
 
 conf = []
 text = []
@@ -128,8 +128,7 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 #agi.verbose(text[0])
-foo44=unicode(text[0], "utf-8")
-print(foo44)
+print(json.dumps(response_data['results'][0]['alternatives']), ensure_ascii=False)
 
 #agi.verbose('temp:', temp)
 #agi.verbose(temp.name, '.ulaw')
