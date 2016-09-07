@@ -100,9 +100,9 @@ def zippo(junk):
 	return junk
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-agi = AGI()
-agi.answer()
-agi.verbose("python agi started")
+#agi = AGI()
+#agi.answer()
+#agi.verbose("python agi started")
 
             
 
@@ -113,20 +113,22 @@ agi.verbose("python agi started")
 
 t = threading.Thread(target=main, args=audiotest)
 t.start()
-agi.verbose(t.join())
+#agi.verbose(t.join())
 #agi.verbose(main(audiotest))
-#print(main(audiotest))
+print('Before')
+print(t.join())
+print('After')
 
 
 # Get variable environment
-extension = agi.env['agi_extension']
+#extension = agi.env['agi_extension']
 
 # Get variable in dialplan
-phone_exten = agi.get_variable('PHONE_EXTEN')
+#phone_exten = agi.get_variable('PHONE_EXTEN')
 
 # Set variable, it will be available in dialplan
-agi.set_variable('EXT_CALLERID', (extension))
-agi.verbose('end')
+#agi.set_variable('EXT_CALLERID', (extension))
+#agi.verbose('end')
 
 
 
