@@ -133,7 +133,8 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 res = response_data['results'][0]['alternatives'][0]['transcript']
 #print('%s' % res)
 
-agi.verbose('Python SUCKS')
+res = encode('少々お待ちください', 'utf8')
+agi.verbose('Python SUCKS %s' % res)
 
 #agi.verbose(text[0])
 #print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
