@@ -77,7 +77,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'en-US',  # a BCP-47 language tag 
+                'languageCode': 'ja-JP',  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
             },
             'audio': {
@@ -104,7 +104,7 @@ def main(speech_file):
     # [END run_application]
 
     
-audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
+audiotest = '/var/lib/asterisk/sounds/ja/welcome.ulaw'    
 #agi = AGI()
 #agi.answer()
 #agi.verbose("python agi started")
@@ -112,6 +112,10 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #response_data = main(audiotest)
 
 #print(json.dumps(main(audiotest)['result'][0], ensure_ascii=False))
+
+logging.basicConfig(filename='example.log',level=logging.DEBUG)
+logging.info('So should this')
+
 print json.dumps(main(audiotest), sort_keys=True, indent=4)
             
 
