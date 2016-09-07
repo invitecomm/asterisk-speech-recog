@@ -23,6 +23,12 @@ import json
 import os
 from asterisk.agi import *
 
+#import logging
+
+#logging.basicConfig(level=logging.DEBUG,
+#                    format='(%(threadName)-10s) %(message)s',
+#                    )
+
 from googleapiclient import discovery
 import httplib2
 from oauth2client.client import GoogleCredentials
@@ -99,17 +105,17 @@ def main(speech_file):
 
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-agi = AGI()
-agi.answer()
-agi.verbose("python agi started")
+#agi = AGI()
+#agi.answer()
+#agi.verbose("python agi started")
 
 #response_data = main(audiotest)
 
-response_data = json.dumps(main(audiotest)['results'][0]['alternatives'][0]['transcript'], ensure_ascii=False)
+print(json.dumps(main(audiotest)['result'][0], ensure_ascii=False), sort_keys=True, indent=4)
 
             
 
-agi.verbose(response_data)
+#agi.verbose("python agi processing")
 #j = json.loads(main(audiotest))
 #call_data = main(audiotest)
 #agi.wait_for_digit(2000)
