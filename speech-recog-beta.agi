@@ -97,9 +97,9 @@ audiotest = '/var/lib/asterisk/sounds/ja/one-moment-please.ulaw'
 temp = tempfile.NamedTemporaryFile()
 temp.close()
 
-#agi = AGI()
-#agi.answer()
-#agi.verbose("python agi started")
+agi = AGI()
+agi.answer()
+agi.verbose("python agi started")
 
 filename = temp.name
 format = 'ulaw'
@@ -136,7 +136,7 @@ res = 'カタカナ'
 #print('%s' % res)
 
 #res = 
-print('PYTHON SUCKS: %s' % res )
+agi.verbose('PYTHON SUCKS: %s' % res )
 
 #agi.verbose(text[0])
 #print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
