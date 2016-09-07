@@ -104,7 +104,7 @@ def main(speech_file):
     # [END run_application]
 
     
-audiotest = '/var/lib/asterisk/sounds/ja/hello.ulaw'    
+audiotest = '/var/lib/asterisk/sounds/ja/conf-waitforleader.ulaw'    
 #agi = AGI()
 #agi.answer()
 #agi.verbose("python agi started")
