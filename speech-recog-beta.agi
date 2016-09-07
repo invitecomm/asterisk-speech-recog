@@ -134,7 +134,7 @@ agi.verbose(text[0])
 #agi.verbose(temp.name, '.ulaw')
 
 #agi.verbose('python agi ended')
-agi.set_variable('RESPONSE', (text[0]))
+agi.set_variable('RESPONSE', 'text[0]')
 
 
 
