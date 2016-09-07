@@ -1,3 +1,10 @@
+Working with Cloud Speech API BETA 
+
+The google examples use python, so making the conversion here.  The following files are currently being worked on.
+
+- agi_script.py
+- speech-recog-beta.agi
+
 ==============================================
     Speech recognition script for Asterisk
 ==============================================
