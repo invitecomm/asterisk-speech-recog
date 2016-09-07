@@ -21,14 +21,7 @@ import base64
 import json
 
 import os
-import time
 from asterisk.agi import *
-
-import logging
-
-logging.basicConfig(level=logging.DEBUG,
-                    format='(%(threadName)-10s) %(message)s',
-                    )
 
 from googleapiclient import discovery
 import httplib2
@@ -112,7 +105,7 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 
 #response_data = main(audiotest)
 
-print(json.dumps(main(audiotest)['result'][0], ensure_ascii=False))
+print(json.dumps(main(audiotest), ensure_ascii=False))
 
             
 
