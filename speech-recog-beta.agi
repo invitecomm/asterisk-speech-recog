@@ -120,15 +120,15 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 
 #print(json.dumps(response_data, ensure_ascii=False))
 
-conf = []
-text = []
+#conf = []
+#text = []
 
 for idx,result in enumerate(response_data['results'][0]['alternatives']):
     #print(idx)
     #print(result["confidence"])
     #print(result["transcript"])
-	conf.append=result['confidence']    
-	text.append=result['transcript']
+	conf.append(result['confidence'])  
+	text.append(result['transcript'])
 
 print(text[0])
             
