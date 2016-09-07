@@ -99,17 +99,17 @@ def main(speech_file):
 
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-#agi = AGI()
-#agi.answer()
-#agi.verbose("python agi started")
+agi = AGI()
+agi.answer()
+agi.verbose("python agi started")
 
 #response_data = main(audiotest)
 
-print(json.dumps(main(audiotest)['results'][0]['alternatives'][0]['transcript'], ensure_ascii=False))
+response_data = json.dumps(main(audiotest)['results'][0]['alternatives'][0]['transcript'], ensure_ascii=False)
 
             
 
-#agi.verbose("python agi processing")
+agi.verbose(response_data)
 #j = json.loads(main(audiotest))
 #call_data = main(audiotest)
 #agi.wait_for_digit(2000)
