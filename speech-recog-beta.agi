@@ -93,6 +93,7 @@ def main(speech_file):
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
 temp = tempfile.NamedTemporaryFile()
+temp.close()
 
 agi = AGI()
 agi.answer()
@@ -128,6 +129,5 @@ agi.verbose(temp.name, '.ulaw')
 
 agi.verbose('python agi ended')
 
-temp.close()
 
 
