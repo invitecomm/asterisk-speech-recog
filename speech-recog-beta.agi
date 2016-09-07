@@ -111,7 +111,9 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 agi.verbose(text[0])
-agi.verbose(temp.name)
+
+agi.verbose('temp:', temp)
+agi.verbose('temp.name:', temp.name)
 
 agi.verbose('python agi ended')
 
