@@ -123,7 +123,9 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 conf = []
 text = []
 
-for key, result in response_data.items():
+data=json.loads(response_data)
+
+for key, result in data.items():
 	#conf.append(result['confidence'])  
 	#text.append(result['transcript'])
 	print key, result
