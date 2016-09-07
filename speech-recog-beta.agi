@@ -105,6 +105,8 @@ agi.verbose("python agi started")
 #agi.verbose("python agi processing")
 #j = json.loads(main(audiotest))
 call_data = main(audiotest)
+agi.wait_for_digit(2000)
+
 agi.verbose(call_data)
 #agi.verbose(main(audiotest))
 #print(main(audiotest))
