@@ -92,7 +92,7 @@ def main(speech_file):
 # [START run_application]
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
-temp = tempfile.TemporaryFile()
+temp = tempfile.NamedTemporaryFile()
 
 agi = AGI()
 agi.answer()
