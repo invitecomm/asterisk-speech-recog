@@ -21,6 +21,7 @@ import base64
 import json
 
 import os
+import threading
 from asterisk.agi import *
 
 from googleapiclient import discovery
@@ -110,7 +111,9 @@ agi.verbose("python agi started")
 #call_data = main(audiotest)
 #agi.wait_for_digit(2000)
 
-agi.verbose(main(audiotest))
+t = threading.Thread(name='non-daemon', target=main(audiotest))
+t.start()
+agi.verbose(t.join())
 #agi.verbose(main(audiotest))
 #print(main(audiotest))
 
