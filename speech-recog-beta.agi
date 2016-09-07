@@ -142,7 +142,7 @@ res = response_data['results'][0]['alternatives'][0]['transcript']
 #print('%s' % res)
 
 #res = 
-agi.verbose('PYTHON SUCKS: %s' % res )
+agi.verbose(u'PYTHON SUCKS: %s' % res )
 #print(type(res))
 
 #agi.verbose(text[0])
