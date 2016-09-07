@@ -84,13 +84,13 @@ def main(speech_file):
     response = service_request.execute()
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
-    return json.dumps(response, ensure_ascii=False)
+    #return json.dumps(response, ensure_ascii=False)
+    return response
     # [END send_request]
 
 # [START run_application]
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
-
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
@@ -98,7 +98,7 @@ agi.verbose("python agi started")
 response_data = main(audiotest)
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
-logging.debug(response_data)
+logging.debug(json.dumps(response_data, ensure_ascii=False))
 
 conf = []
 text = []
@@ -108,5 +108,8 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 agi.verbose(text[0])
-
 agi.verbose('python agi ended')
+
+
+
+
