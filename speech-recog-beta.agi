@@ -42,6 +42,8 @@ DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
 
 # Application default credentials provided by env variable
 # GOOGLE_APPLICATION_CREDENTIALS
+
+# ** Permissions of file are IMPORTANT **
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/google_voice_api.json'
 
 def get_speech_service():
@@ -89,8 +91,8 @@ def main(speech_file):
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
-    foo = 'nothing to see here'
-    return foo
+    #foo = 'nothing to see here'
+    return response
     # [END send_request]
 
 # [START run_application]
@@ -101,15 +103,16 @@ def main(speech_file):
 #    args = parser.parse_args()
 #    main(args.speech_file)
     # [END run_application]
-    
-def zippo(junk):
-    time.sleep( 5 )
-    return junk
+
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-agi = AGI()
+#agi = AGI()
 #agi.answer()
-agi.verbose("python agi started")
+#agi.verbose("python agi started")
+
+response_data = main(audiotest)
+
+print(json.dumps(response_data['result'][0], ensure_ascii=False))
 
             
 
@@ -122,10 +125,10 @@ agi.verbose("python agi started")
 #t.start()
 #agi.verbose(t.join())
 #agi.verbose(main(audiotest))
-agi.verbose('Before')
+#agi.verbose('Before')
 #print(t.join())
-agi.verbose(main(audiotest))
-agi.verbose('After')
+#agi.verbose(main(audiotest))
+#agi.verbose('After')
 
 
 # Get variable environment
