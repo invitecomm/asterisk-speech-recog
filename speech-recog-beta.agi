@@ -84,7 +84,7 @@ def main(speech_file):
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
     #foo = 'nothing to see here'
-    return speech_file
+    return foo
     # [END send_request]
 
 # [START run_application]
@@ -111,7 +111,7 @@ agi.verbose("python agi started")
 #call_data = main(audiotest)
 #agi.wait_for_digit(2000)
 
-t = threading.Thread(name='non-daemon', target=main(audiotest))
+t = threading.Thread(target=main, args=audiotest)
 t.start()
 agi.verbose(t.join())
 #agi.verbose(main(audiotest))
