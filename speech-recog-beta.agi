@@ -101,9 +101,9 @@ def zippo(junk):
     return junk
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-#agi = AGI()
-#agi.answer()
-#agi.verbose("python agi started")
+agi = AGI()
+agi.answer()
+agi.verbose("python agi started")
 
             
 
@@ -116,10 +116,10 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #t.start()
 #agi.verbose(t.join())
 #agi.verbose(main(audiotest))
-print('Before')
+agi.verbose('Before')
 #print(t.join())
-print(zippo(audiotest))
-print('After')
+agi.verbose(zippo(audiotest))
+agi.verbose('After')
 
 
 # Get variable environment
