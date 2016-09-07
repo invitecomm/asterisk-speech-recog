@@ -107,7 +107,7 @@ timeout = 20000
 beep = 'beep'
 offset = '0'
 silence = 's=2'
-agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
+#agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
 # agi.record_file((filename), (format))
 #agi.verbose(temp.name + '.ulaw')
 #agi.verbose(filename)
