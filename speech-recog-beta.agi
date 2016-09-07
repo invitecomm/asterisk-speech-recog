@@ -128,7 +128,8 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 #agi.verbose(text[0])
-print(unicode(text[0], "utf-8"))
+foo44=unicode(text[0], "utf-8")
+print(foo44)
 
 #agi.verbose('temp:', temp)
 #agi.verbose(temp.name, '.ulaw')
