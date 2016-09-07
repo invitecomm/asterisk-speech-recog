@@ -98,7 +98,7 @@ def main(speech_file):
     
 def zippo(junk):
     time.sleep( 5 )
-    return 'what'
+    return junk
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
 #agi = AGI()
@@ -118,7 +118,7 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 #agi.verbose(main(audiotest))
 print('Before')
 #print(t.join())
-print(main(audiotest))
+print(zippo(audiotest))
 print('After')
 
 
