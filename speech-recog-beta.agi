@@ -92,7 +92,7 @@ def main(speech_file):
 # [START run_application]
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
-f = NamedTemporaryFile(delete=False)
+audiofile = NamedTemporaryFile(delete=False)
 
 
 agi = AGI()
@@ -112,7 +112,7 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 agi.verbose(text[0])
-agi.verbose(f.name)
+#agi.verbose(f.name)
 
 agi.verbose('python agi ended')
 
