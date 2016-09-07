@@ -83,6 +83,7 @@ def main(speech_file):
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
     foo = 'nothing to see here'
+    agi.verbose(foo)
     return foo
     # [END send_request]
 
