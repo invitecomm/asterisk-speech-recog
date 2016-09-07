@@ -125,7 +125,7 @@ for result in response_data['results'][0]['alternatives']:
 	conf.append(result['confidence'])  
 	text.append(result['transcript'])
 
-agi.verbose(text[0])
+agi.verbose('Response:', text[0])
 
 #agi.verbose('temp:', temp)
 #agi.verbose(temp.name, '.ulaw')
