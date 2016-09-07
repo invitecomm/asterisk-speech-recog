@@ -23,7 +23,7 @@ import base64
 import json
 
 import os
-from asterisk.agi import *
+#from asterisk.agi import *
 import logging
 import tempfile
 
