@@ -37,9 +37,6 @@ DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
 # GOOGLE_APPLICATION_CREDENTIALS
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/google_voice_api.json'
 
-agi = AGI()
-
-
 def get_speech_service():
     credentials = GoogleCredentials.get_application_default().create_scoped(
         ['https://www.googleapis.com/auth/cloud-platform'])
@@ -98,7 +95,11 @@ def main(speech_file):
 #    main(args.speech_file)
     # [END run_application]
     
+def zippo(junk):
+	return junk
+    
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
+agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
 
@@ -106,10 +107,10 @@ agi.verbose("python agi started")
 
 #agi.verbose("python agi processing")
 #j = json.loads(main(audiotest))
-call_data = main(audiotest)
-agi.wait_for_digit(2000)
+#call_data = main(audiotest)
+#agi.wait_for_digit(2000)
 
-agi.verbose(call_data)
+agi.verbose(zippo('dumb way to do things'))
 #agi.verbose(main(audiotest))
 #print(main(audiotest))
 
