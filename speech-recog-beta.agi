@@ -83,7 +83,6 @@ def main(speech_file):
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
     foo = 'nothing to see here'
-    agi.verbose(foo)
     return foo
     # [END send_request]
 
@@ -105,10 +104,9 @@ agi.verbose("python agi started")
 
 #agi.verbose("python agi processing")
 #j = json.loads(main(audiotest))
-#call_data = main(audiotest)
-#agi.verbose(call_data)
-
-agi.verbose(main(audiotest))
+call_data = 'got this far'
+agi.verbose(call_data)
+#agi.verbose(main(audiotest))
 #print(main(audiotest))
 
 
@@ -119,7 +117,8 @@ extension = agi.env['agi_extension']
 phone_exten = agi.get_variable('PHONE_EXTEN')
 
 # Set variable, it will be available in dialplan
-agi.set_variable('EXT_CALLERID', (digit))
+agi.set_variable('EXT_CALLERID', (extension))
+agi.verbose('end')
 
 
 
