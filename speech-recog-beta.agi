@@ -82,7 +82,8 @@ def main(speech_file):
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
-    return response
+    foo = 'nothing to see here'
+    return foo
     # [END send_request]
 
 # [START run_application]
@@ -98,33 +99,14 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-speech = open(audiotest, 'rb')
-speech_content = base64.b64encode(speech.read())
-service = get_speech_service()
-service_request = service.speech().syncrecognize(
-    body={
-        'config': {
-        # There are a bunch of config options you can specify. See
-        # https://goo.gl/EPjAup for the full list.
-        'encoding': 'MULAW',  # raw 16-bit signed LE samples
-        'sampleRate': 8000,  # 16 khz
-        # See https://goo.gl/DPeVFW for a list of supported languages.
-        'languageCode': 'en-US',  # a BCP-47 language tag 
-        # Working with: en-US/ja-JP
-        },
-        'audio': {
-            'content': speech_content.decode('UTF-8')
-        }
-    })
-response = service_request.execute()
+
             
 
 #agi.verbose("python agi processing")
 #j = json.loads(main(audiotest))
 #call_data = main(audiotest)
 #agi.verbose(call_data)
-with json.dumps(response["results"][0]["alternatives"][0]["transcript"], ensure_ascii=False) as transcript:
-agi.verbose(transcript)
+agi.verbose(main(audiotest))
 #print(transcript)
 
 
