@@ -117,7 +117,7 @@ agi.verbose("python agi started")
 #agi.verbose(main(audiotest))
 agi.verbose('Before')
 #print(t.join())
-agi.verbose(main(audiotest))
+agi.verbose(junk(audiotest))
 agi.verbose('After')
 
 
