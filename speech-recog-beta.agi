@@ -131,6 +131,7 @@ for idx,result in enumerate(response_data['results'][0]['alternatives']):
 	text.append(result['transcript'])
 
 print(text[0])
+print(text[1])
             
 
 #agi.verbose("python agi processing")
