@@ -63,7 +63,7 @@ def main(speech_file):
         # Base64 encode the binary audio file for inclusion in the JSON
         # request.
         speech_content = base64.b64encode(speech.read())
-	agi.stream_file('/var/lib/asterisk/sounds/ja/wait-moment')
+	agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
     service = get_speech_service()
     service_request = service.speech().syncrecognize(
         body={
