@@ -120,8 +120,8 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 
 #print(json.dumps(response_data, ensure_ascii=False))
 
-for result in response_data['results'][0]['alternatives']:
-    #print(idx)
+for idx,result in enumerate(response_data['results'][0]['alternatives']):
+    print(idx)
     print(result["confidence"])
     print(result["transcript"])
     
