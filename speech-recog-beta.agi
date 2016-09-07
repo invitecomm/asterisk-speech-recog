@@ -108,9 +108,11 @@ offset = '0'
 silence = 's=5'
 agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
 # agi.record_file((filename), (format))
+agi.verbose(temp.name, '.ulaw')
+agi.verbose(filename)
 
 
-response_data = main(temp.name,'.ulaw')
+#response_data = main(temp.name,'.ulaw')
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
 logging.debug(json.dumps(response_data, ensure_ascii=False))
