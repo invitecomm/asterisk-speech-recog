@@ -135,9 +135,9 @@ for result in response_data['results'][0]['alternatives']:
 
 agi.verbose('processed')
 
-testing = text[0]
+#testing = text[0]
 
-agi.verbose(testing)
+agi.verbose(text[0])
 
             
 
