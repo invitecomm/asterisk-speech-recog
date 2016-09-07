@@ -24,6 +24,12 @@ import os
 import time
 from asterisk.agi import *
 
+import logging
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='(%(threadName)-10s) %(message)s',
+                    )
+
 from googleapiclient import discovery
 import httplib2
 from oauth2client.client import GoogleCredentials
