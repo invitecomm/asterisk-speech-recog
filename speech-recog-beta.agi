@@ -135,7 +135,7 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 #print('%s' % res)
 
 #res = 
-agi.verbose('少々お待ちください')
+agi.verbose('PYTHON SUCKS' + '少々お待ちください')
 
 #agi.verbose(text[0])
 #print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
