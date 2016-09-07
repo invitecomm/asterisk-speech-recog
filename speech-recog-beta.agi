@@ -21,7 +21,7 @@ import base64
 import json
 
 import os
-import threading
+import time
 from asterisk.agi import *
 
 from googleapiclient import discovery
@@ -97,6 +97,7 @@ def main(speech_file):
     # [END run_application]
     
 def zippo(junk):
+    time.sleep(3)
 	return junk
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
