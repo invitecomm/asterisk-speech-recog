@@ -82,8 +82,8 @@ def main(speech_file):
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
-    foo = 'nothing to see here'
-    return foo
+    #foo = 'nothing to see here'
+    return speech_file
     # [END send_request]
 
 # [START run_application]
@@ -110,7 +110,7 @@ agi.verbose("python agi started")
 #call_data = main(audiotest)
 #agi.wait_for_digit(2000)
 
-agi.verbose(zippo('dumb way to do things'))
+agi.verbose(main(audiotest))
 #agi.verbose(main(audiotest))
 #print(main(audiotest))
 
