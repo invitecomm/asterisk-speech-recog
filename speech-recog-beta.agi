@@ -143,7 +143,7 @@ res = response_data['results'][0]['alternatives'][0]['transcript']
 
 #res = 
 agi.verbose('PYTHON SUCKS: %s' % res )
-print(type(res))
+#print(type(res))
 
 #agi.verbose(text[0])
 #print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
