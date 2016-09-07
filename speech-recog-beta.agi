@@ -111,8 +111,8 @@ audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'
 
 #response_data = main(audiotest)
 
-print(json.dumps(main(audiotest)['result'][0], ensure_ascii=False), sort_keys=True, indent=4)
-
+#print(json.dumps(main(audiotest)['result'][0], ensure_ascii=False))
+print json.dumps(main(audiotest), sort_keys=True, indent=4)
             
 
 #agi.verbose("python agi processing")
