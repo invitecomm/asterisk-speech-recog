@@ -23,6 +23,7 @@ import json
 import os
 from asterisk.agi import *
 import logging
+import tempfile
 
 from googleapiclient import discovery
 import httplib2
@@ -90,7 +91,11 @@ def main(speech_file):
 
 # [START run_application]
     
-audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
+audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'   
+
+f = NamedTemporaryFile(mode='w+b', delete=False)
+
+ 
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
@@ -108,6 +113,8 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 agi.verbose(text[0])
+agi.verbose(f.name)
+
 agi.verbose('python agi ended')
 
 
