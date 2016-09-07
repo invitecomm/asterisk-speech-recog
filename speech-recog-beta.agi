@@ -100,7 +100,7 @@ def zippo(junk):
 	return junk
     
 audiotest = '/var/lib/asterisk/sounds/en/welcome.ulaw'    
-#agi = AGI()
+agi = AGI()
 #agi.answer()
 #agi.verbose("python agi started")
 
