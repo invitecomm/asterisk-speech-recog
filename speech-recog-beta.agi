@@ -130,8 +130,8 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 	#text.append(result['transcript'])
 #	print key, result
 
-foo44 = response_data['results'][0]['alternatives'][0]['transcript']
-print('%s' % foo44)
+res = unicode(response_data['results'][0]['alternatives'][0]['transcript'], 'utf8')
+print('%s' % res)
 
 #agi.verbose('%s' % foo44)
 
