@@ -124,8 +124,8 @@ for idx,result in enumerate(response_data['results'][0]['alternatives']):
     #print(idx)
     #print(result["confidence"])
     #print(result["transcript"])
-	foox[idx] = result["confidence"]    
-	fooy[idx] = result["transcript"]
+	foox[idx]=result["confidence"]    
+	fooy[idx]=result["transcript"]
 
 print(foox[0])
             
