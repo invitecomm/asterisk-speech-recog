@@ -132,7 +132,7 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 #	print key, result
 
 #res = response_data['results'][0]['alternatives'][0]['transcript']
-res = 'it really sucks'
+res = 'it カタカナ sucks'
 #print('%s' % res)
 
 #res = 
