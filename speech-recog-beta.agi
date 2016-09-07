@@ -128,7 +128,7 @@ for result in response_data['results'][0]['alternatives']:
 	text.append(result['transcript'])
 
 #agi.verbose(text[0])
-print(json.dumps(response_data['results'][0]['alternatives']), ensure_ascii=False)
+print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
 
 #agi.verbose('temp:', temp)
 #agi.verbose(temp.name, '.ulaw')
