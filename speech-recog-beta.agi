@@ -135,9 +135,9 @@ response_data = main(audiotest)
 	#text.append(result['transcript'])
 #	print key, result
 
-res = response_data['results'][0]['alternatives'][0]['transcript']
-#res = 'カタカナ'
-res.decode().encode('utf-8')
+#res = response_data['results'][0]['alternatives'][0]['transcript']
+res = 'カタカナ'
+#res.decode().encode('utf-8')
 #print('%s' % res)
 
 #res = 
