@@ -148,7 +148,7 @@ agi.verbose(text[0])
 #agi.verbose('Before')
 #print(t.join())
 #agi.verbose(main(audiotest))
-#agi.verbose('After')
+agi.verbose('After')
 
 
 # Get variable environment
