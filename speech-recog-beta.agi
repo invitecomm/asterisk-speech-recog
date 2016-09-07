@@ -22,12 +22,7 @@ import json
 
 import os
 from asterisk.agi import *
-
 import logging
-
-#logging.basicConfig(level=logging.DEBUG,
-#                    format='(%(threadName)-10s) %(message)s',
-#                    )
 
 from googleapiclient import discovery
 import httplib2
@@ -89,22 +84,13 @@ def main(speech_file):
     response = service_request.execute()
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
-    #return json.dumps(response, ensure_ascii=False)
-    #foo = 'nothing to see here'
-    return response
+    return json.dumps(response, ensure_ascii=False)
     # [END send_request]
 
 # [START run_application]
-#if __name__ == '__main__':
-#    parser = argparse.ArgumentParser()
-#    parser.add_argument(
-#        'speech_file', help='Full path of audio file to be recognized')
-#    args = parser.parse_args()
-#    main(args.speech_file)
-    # [END run_application]
-
     
 audiotest = '/var/lib/asterisk/sounds/en/conf-waitforleader.ulaw'    
+
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
@@ -112,72 +98,15 @@ agi.verbose("python agi started")
 response_data = main(audiotest)
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
-logging.debug(json.dumps(response_data, ensure_ascii=False))
-
-#logging.basicConfig(level=logging.DEBUG,
-#                    format='(%(threadName)-10s) %(message)s',
-#                    )
-
-#print(json.dumps(response_data, ensure_ascii=False))
+logging.debug(response_data)
 
 conf = []
 text = []
 
 for result in response_data['results'][0]['alternatives']:
-    #print(idx)
-    #print(result["confidence"])
-    #print(result["transcript"])
 	conf.append(result['confidence'])  
 	text.append(result['transcript'])
 
-#print(text[0])
-#print(text[1])
-
-agi.verbose('processed')
-
-#testing = text[0]
-
 agi.verbose(text[0])
 
-            
-
-#agi.verbose("python agi processing")
-#j = json.loads(main(audiotest))
-#call_data = main(audiotest)
-#agi.wait_for_digit(2000)
-
-#t = threading.Thread(target=main, args=audiotest)
-#t.start()
-#agi.verbose(t.join())
-#agi.verbose(main(audiotest))
-#agi.verbose('Before')
-#print(t.join())
-#agi.verbose(main(audiotest))
-agi.verbose('After')
-
-
-# Get variable environment
-#extension = agi.env['agi_extension']
-
-# Get variable in dialplan
-#phone_exten = agi.get_variable('PHONE_EXTEN')
-
-# Set variable, it will be available in dialplan
-#agi.set_variable('EXT_CALLERID', (extension))
-#agi.verbose('end')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+agi.verbose('python agi ended')
