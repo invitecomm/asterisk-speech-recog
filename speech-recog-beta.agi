@@ -137,13 +137,13 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 #	print key, result
 
 #string = response_data['results'][0]['alternatives'][0]['transcript']
-string = 'カタカナ'
+string = 'VERBOSE "カタカナ" 1'
 res = string.encode('utf8', 'replace')
 
 #res.decode().encode('utf-8')
 #print('START')
 agi.verbose('%s' % res)
-print('VERBOSE', res, 1)
+print(res)
 #print('NEXT')
 #type_info = type(res)
 #print(type_info)
