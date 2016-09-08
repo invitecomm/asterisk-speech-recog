@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-# vim:fenc=utf-8
+# vim: set et sw=4 fenc=utf-8:
+#
+# Copyright 2016 INVITE Communications Co., Ltd. All Rights Reserved.
 # Copyright 2016 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +16,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Google Cloud Speech API sample application using the REST API for batch
-processing."""
+"""AGI script that renders speech to text using Google Cloud Speech API
+# using the REST API."""
 
 # [START import_libraries]
-# import argparse
 import base64
 import json
 
@@ -27,9 +28,9 @@ from asterisk.agi import *
 import logging
 import tempfile
 
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+#import sys
+#reload(sys)
+#sys.setdefaultencoding("utf-8")
 
 from googleapiclient import discovery
 import httplib2
@@ -39,7 +40,6 @@ from oauth2client.client import GoogleCredentials
 # [START authenticating]
 DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
                  'version={apiVersion}')
-
 
 # Application default credentials provided by env variable
 # GOOGLE_APPLICATION_CREDENTIALS
@@ -113,14 +113,15 @@ timeout = 20000
 beep = 'beep'
 offset = '0'
 silence = 's=2'
-#agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
+agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
+
 # agi.record_file((filename), (format))
 #agi.verbose(temp.name + '.ulaw')
 #agi.verbose(filename)
 
 
-#response_data = main(temp.name + '.ulaw')
-response_data = main(audiotest)
+response_data = main(temp.name + '.ulaw')
+#response_data = main(audiotest)
 
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
@@ -131,19 +132,19 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 
 #data = json.loads(json.dumps(response_data, ensure_ascii=False))
 
-#for key, result in data.items():
+for key, result in data.items():
 	#conf.append(result['confidence'])  
 	#text.append(result['transcript'])
 #	print key, result
 
-#string = response_data['results'][0]['alternatives'][0]['transcript']
-string = 'VERBOSE "カタカナ" 1'
+string = response_data['results'][0]['alternatives'][0]['transcript']
+#string = 'VERBOSE "カタカナ" 1'
 res = string.encode('utf8', 'replace')
 
 #res.decode().encode('utf-8')
 #print('START')
 agi.verbose('%s' % res)
-print(res)
+#print(res)
 #print('NEXT')
 #type_info = type(res)
 #print(type_info)
