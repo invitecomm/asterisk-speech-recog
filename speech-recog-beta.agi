@@ -130,15 +130,16 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 #conf = []
 #text = []
 
-#data = json.loads(json.dumps(response_data, ensure_ascii=False))
+data = json.loads(json.dumps(response_data, ensure_ascii=False))
 
-#for key, result in data.items():
-	#conf.append(result['confidence'])  
-	#text.append(result['transcript'])
+for key, result in data.items():
+	conf.append(result['confidence'])  
+	text.append(result['transcript'])
 #	print key, result
 
-string = response_data['results'][0]['alternatives'][0]['transcript']
+#string = response_data['results'][0]['alternatives'][0]['transcript']
 #string = 'VERBOSE "カタカナ" 1'
+string = text[0]
 res = string.encode('utf8', 'replace')
 
 #res.decode().encode('utf-8')
