@@ -142,7 +142,8 @@ res = response_data['results'][0]['alternatives'][0]['transcript']
 agi.verbose('START')
 agi.verbose('%s' % res)
 agi.verbose('NEXT')
-agi.verbose(type(res))
+type_info = type(res)
+agi.verbose(type_info)
 agi.verbose('DONE')
 
 
