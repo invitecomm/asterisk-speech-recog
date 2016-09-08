@@ -111,7 +111,7 @@ filename = temp.name
 format = 'ulaw'
 intkey = '#'
 timeout = 20000
-beep = 'beep'
+beep = ''
 offset = '0'
 silence = 's=10'
 agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
