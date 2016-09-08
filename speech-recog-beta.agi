@@ -141,6 +141,8 @@ res = response_data['results'][0]['alternatives'][0]['transcript']
 #res.decode().encode('utf-8')
 agi.verbose('%s' % res)
 agi.verbose(type(res))
+agi.verbose('DONE')
+
 
 #res = 
 #agi.verbose(u'PYTHON SUCKS: %s' % res )
