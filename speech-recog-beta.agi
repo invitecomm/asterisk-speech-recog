@@ -139,7 +139,9 @@ logging.debug(json.dumps(response_data))
 res = response_data['results'][0]['alternatives'][0]['transcript']
 
 #res.decode().encode('utf-8')
+agi.verbose('START')
 agi.verbose('%s' % res)
+agi.verbose('NEXT')
 agi.verbose(type(res))
 agi.verbose('DONE')
 
