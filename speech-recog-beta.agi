@@ -98,7 +98,7 @@ def main(speech_file):
 
 # [START run_application]
     
-audiotest = '/var/lib/asterisk/sounds/ja/one-moment-please.ulaw'    
+audiotest = '/var/lib/asterisk/sounds/en/one-moment-please.ulaw'    
 temp = tempfile.NamedTemporaryFile()
 temp.close()
 
