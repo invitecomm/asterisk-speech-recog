@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """AGI script that renders speech to text using Google Cloud Speech API
-# using the REST API."""
+ using the REST API."""
 
 # [START import_libraries]
 import base64
