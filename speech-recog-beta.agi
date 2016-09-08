@@ -136,10 +136,10 @@ logging.debug(json.dumps(response_data))
 	#text.append(result['transcript'])
 #	print key, result
 
-#res = response_data['results'][0]['alternatives'][0]['transcript']
+res = response_data['results'][0]['alternatives'][0]['transcript']
 
 #res.decode().encode('utf-8')
-#print('%s' % res)
+print('%s' % res)
 
 #res = 
 #agi.verbose(u'PYTHON SUCKS: %s' % res )
