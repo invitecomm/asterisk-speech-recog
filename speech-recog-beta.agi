@@ -28,9 +28,9 @@ from asterisk.agi import *
 import logging
 import tempfile
 
-#import sys
-#reload(sys)
-#sys.setdefaultencoding("utf-8")
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 from googleapiclient import discovery
 import httplib2
