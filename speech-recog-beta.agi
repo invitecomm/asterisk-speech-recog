@@ -136,7 +136,8 @@ logging.debug(json.dumps(response_data, ensure_ascii=False))
 	#text.append(result['transcript'])
 #	print key, result
 
-string = response_data['results'][0]['alternatives'][0]['transcript']
+#string = response_data['results'][0]['alternatives'][0]['transcript']
+string = 'カタカナ'
 res = string.encode('utf8', 'replace')
 
 #res.decode().encode('utf-8')
