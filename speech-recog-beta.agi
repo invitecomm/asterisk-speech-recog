@@ -137,9 +137,8 @@ for key, result in data.items():
 	text.append(result['transcript'])
 #	print key, result
 
-#string = response_data['results'][0]['alternatives'][0]['transcript']
+string = response_data['results'][0]['alternatives'][0]['transcript']
 #string = 'VERBOSE "カタカナ" 1'
-string = text[0]
 res = string.encode('utf8', 'replace')
 
 #res.decode().encode('utf-8')
@@ -164,7 +163,7 @@ agi.verbose('%s' % res)
 #agi.verbose(temp.name, '.ulaw')
 
 #agi.verbose('python agi ended')
-#agi.set_variable('RESPONSE', 'text[0]')
+agi.set_variable('RESPONSE', res)
 
 
 
