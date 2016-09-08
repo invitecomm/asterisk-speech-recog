@@ -70,6 +70,7 @@ def main(speech_file):
         # request.
         speech_content = base64.b64encode(speech.read())
 	agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
+	agi.execute('EXEC', 'MusicOnHold')
 	#agi.stream_file('/var/lib/asterisk/sounds/en/pls-hold-process-tx')
 	#agi.stream_file('/var/lib/asterisk/moh/macroform-cold_day')
     service = get_speech_service()
@@ -94,6 +95,7 @@ def main(speech_file):
     # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
     #print(json.dumps(response, ensure_ascii=False))
     #return json.dumps(response, ensure_ascii=False)
+    agi.execute('EXEC', 'StopMusicOnHold')
     return response
     # [END send_request]
 
