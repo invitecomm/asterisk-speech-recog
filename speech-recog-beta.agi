@@ -102,10 +102,10 @@ def main(speech_file):
     return response
     # [END send_request]
     
-def moh_start()
+def moh_start():
 	agi.execute('EXEC', 'MusicOnHold')
 
-def moh_stop()
+def moh_stop():
     agi.execute('EXEC', 'StopMusicOnHold')
 
 # [START run_application]
