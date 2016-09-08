@@ -140,12 +140,12 @@ string = response_data['results'][0]['alternatives'][0]['transcript']
 res = string.encode('utf8', 'replace')
 
 #res.decode().encode('utf-8')
-print('START')
-print('%s' % res)
-print('NEXT')
-type_info = type(res)
-print(type_info)
-print('DONE')
+#print('START')
+agi.verbose('%s' % res)
+#print('NEXT')
+#type_info = type(res)
+#print(type_info)
+#print('DONE')
 
 
 #res = 
