@@ -73,7 +73,6 @@ def main(speech_file):
 	
 	#threading.Thread(target=moh_start).start()
 	#agi.execute('EXEC', 'MusicOnHold')
-	moh_start()
 	#agi.stream_file('/var/lib/asterisk/sounds/en/pls-hold-process-tx')
 	#agi.stream_file('/var/lib/asterisk/moh/macroform-cold_day')
     service = get_speech_service()
@@ -133,7 +132,7 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 #agi.verbose(temp.name + '.ulaw')
 #agi.verbose(filename)
 
-#threading.Thread(target=moh_start).start()
+threading.Thread(target=moh_start).start()
 response_data = main(temp.name + '.ulaw')
 #moh_stop()
 #response_data = main(audiotest)
