@@ -133,8 +133,11 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 #agi.verbose(temp.name + '.ulaw')
 #agi.verbose(filename)
 
-threading.Thread(target=moh_start).start()
-agi.verbose('NEXT')
+x = threading.Thread(target=moh_start)
+x.start()
+y = threading.Thread(agi.verbose, args='NEXT')
+y.start()
+y.join()
 response_data = main(temp.name + '.ulaw')
 moh_stop()
 #response_data = main(audiotest)
