@@ -134,6 +134,7 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 #agi.verbose(filename)
 
 x = threading.Thread(target=moh_start)
+x.setDaemon(True)
 y = threading.Thread(agi.verbose, args='NEXT')
 
 x.start()
