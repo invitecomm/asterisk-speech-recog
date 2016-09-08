@@ -70,7 +70,7 @@ def main(speech_file):
         # Base64 encode the binary audio file for inclusion in the JSON
         # request.
         speech_content = base64.b64encode(speech.read())
-	agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
+	
 	#threading.Thread(target=moh_start).start()
 	#agi.execute('EXEC', 'MusicOnHold')
 	#agi.stream_file('/var/lib/asterisk/sounds/en/pls-hold-process-tx')
@@ -103,6 +103,7 @@ def main(speech_file):
     # [END send_request]
     
 def moh_start():
+    agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
 	agi.execute('EXEC', 'MusicOnHold')
 
 def moh_stop():
@@ -131,8 +132,11 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 #agi.verbose(temp.name + '.ulaw')
 #agi.verbose(filename)
 
+threading.Thread(target=moh_start).start()
+response_data = threading.Thread(target=main,args=temp.name + '.ulaw').start()
+threading.Thread(target=moh_stop).start()
 
-response_data = main(temp.name + '.ulaw')
+#response_data = main(temp.name + '.ulaw')
 #response_data = main(audiotest)
 
 
