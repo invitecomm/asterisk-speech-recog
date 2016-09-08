@@ -80,7 +80,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'ja-JP',  # a BCP-47 language tag 
+                'languageCode': 'en-US',  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
             },
             'audio': {
@@ -98,7 +98,7 @@ def main(speech_file):
 
 # [START run_application]
     
-audiotest = '/var/lib/asterisk/sounds/ja/one-moment-please.ulaw'    
+audiotest = '/var/lib/asterisk/sounds/en/one-moment-please.ulaw'    
 temp = tempfile.NamedTemporaryFile()
 temp.close()
 
