@@ -105,7 +105,7 @@ def main(speech_file):
     
 def moh_start():
     agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
-    #agi.execute('EXEC', 'MusicOnHold')
+    agi.execute('EXEC', 'MusicOnHold')
 
 def moh_stop():
     agi.execute('EXEC', 'StopMusicOnHold')
