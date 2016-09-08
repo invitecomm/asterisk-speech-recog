@@ -104,7 +104,7 @@ def main(speech_file):
     
 def moh_start():
     agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
-	#agi.execute('EXEC', 'MusicOnHold')
+	agi.execute('EXEC', 'MusicOnHold')
 
 def moh_stop():
     agi.execute('EXEC', 'StopMusicOnHold')
@@ -134,7 +134,7 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 
 threading.Thread(target=moh_start).start()
 response_data = main(temp.name + '.ulaw')
-#moh_stop()
+moh_stop()
 #response_data = main(audiotest)
 
 
