@@ -134,9 +134,7 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 
 threading.Thread(target=moh_start).start()
 response_data = main(temp.name + '.ulaw')
-threading.Thread(target=moh_stop).start()
-
-#response_data = main(temp.name + '.ulaw')
+moh_stop()
 #response_data = main(audiotest)
 
 
