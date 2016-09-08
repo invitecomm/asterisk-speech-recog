@@ -27,7 +27,7 @@ import os
 from asterisk.agi import *
 import logging
 import tempfile
-import threading
+#import threading
 
 import sys
 reload(sys)
