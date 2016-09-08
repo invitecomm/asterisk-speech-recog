@@ -120,8 +120,8 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 #agi.verbose(filename)
 
 
-#response_data = main(temp.name + '.ulaw')
-response_data = main(audiotest)
+response_data = main(temp.name + '.ulaw')
+#response_data = main(audiotest)
 
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
