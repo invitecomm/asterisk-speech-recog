@@ -123,8 +123,8 @@ silence = 's=2'
 response_data = main(audiotest)
 
 
-#logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
-#logging.debug(json.dumps(response_data, ensure_ascii=False))
+logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
+logging.debug(json.dumps(response_data))
 
 #conf = []
 #text = []
