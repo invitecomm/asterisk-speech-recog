@@ -3,12 +3,10 @@
 These example shows how to use the [Google Cloud Speech API][speech-api] to render speech
 to text and return it back to the dialplan as an Asterisk channel variable.
 
-This source code is different from the original version:
+**This source code is different from the original version:**
 
 - [ ] The Perl Programming Language
 - [x] The **Python** Programming Language
-
-Google Cloud Speech API
 
 ## Requirements
 
