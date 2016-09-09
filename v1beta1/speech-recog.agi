@@ -100,12 +100,11 @@ temp = tempfile.NamedTemporaryFile()
 temp.close()
 
 # Start AGI
-#agi = AGI()
-#agi.answer()
-#agi.verbose("Speech Recognition Started")
+agi = AGI()
+agi.answer()
+agi.verbose("Speech Recognition Started")
 
 # AGI Record Variables
-filename='/var/lib/asterisk/sounds/en/hello.ulaw'
 filename = temp.name
 format = 'ulaw'
 intkey = '#'
@@ -117,12 +116,11 @@ silence = 's=10'
 # Using GENERIC agi.execute command.  
 # agi.record in pyst2 does not have silence detencion option.
 #
-#agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
+agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
 # agi.record_file((filename), (format))
 
 # Process Recorded Audio File
-#response_data = main(temp.name + '.ulaw')
-response_data = main(filename)
+response_data = main(temp.name + '.ulaw')
 
 # Extra Logging of JSON response
 logging.basicConfig(filename='/var/log/google_speech_json.log',level=logging.DEBUG)
@@ -134,9 +132,9 @@ string = response_data['results'][0]['alternatives'][0]['transcript']
 res = string.encode('utf8', 'replace')
 
 # Pass Results to Asterisk Log
-print('The text you just said is: %s' % res)
+agi.verbose('The text you just said is: %s' % res)
 
 # Set ${RESPONSE} in the Asterisk Dial Plan
-#agi.set_variable('RESPONSE', res)
+agi.set_variable('RESPONSE', res)
 
 # [END application]
