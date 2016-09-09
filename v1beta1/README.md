@@ -14,8 +14,8 @@ Google Cloud Speech API
 
 ## Requirements
 
-- Python          The Perl Programming Language
-- pyst2		   The World-Wide Web library for Perl
+- [Python](https://www.python.org/) - The Python Programming Language
+- [pyst2](rdegges/pyst2) - Python Libraries for Asterisk
 - [Google Cloud Speech REST API](GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client)
 
 # Google Cloud Speech API Samples
