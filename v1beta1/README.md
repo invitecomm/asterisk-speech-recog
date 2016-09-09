@@ -15,7 +15,9 @@ to text and return it back to the dialplan as an Asterisk channel variable.
 - [Google Cloud Speech REST API](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client)
   - [Cloud Speech API Account & Credentials](https://console.cloud.google.com)
 - Internet access in order to contact google and get the speech data.
+
 ----
+
 ## Installation
 
 To install, copy speech-recog.agi to your agi-bin directory.  
@@ -41,7 +43,9 @@ This will install the latest version of the library automatically.
 Follow the installation instructions on the [Google Cloud Speech REST API](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client) page.
 
 `pip install -r requirements.txt`
+
 ----
+
 ## Usage
 `agi(speech-recog.agi,[lang],[timeout],[intkey],[NOBEEP])`
 
