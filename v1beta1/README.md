@@ -15,39 +15,15 @@ Google Cloud Speech API
 - [Python](https://www.python.org/) - The Python Programming Language
 - [pyst2](https://github.com/rdegges/pyst2) - Python Libraries for Asterisk
 - [Google Cloud Speech REST API](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client)
-  - [Cloud Speech API credentials](https://console.cloud.google.com)
+  - [Cloud Speech API Account & Credentials](https://console.cloud.google.com)
+- Internet access in order to contact google and get the speech data.
 
-# Google Cloud Speech API Samples
+## Installation
 
-These samples show how to use the [Google Cloud Speech API][speech-api]
-to transcribe audio files, as well as live audio from your computer's
-microphone.
-
-* [`api-client/`](api-client) contains samples that use the [Google API Client
-  Library for Python][rest-client] to make REST calls to the API.
-* [`grpc/`](grpc) contains samples that use the more-efficient (though sometimes
-  more complex) [GRPC][grpc] API. The GRPC API also allows streaming requests.
-
-[speech-api]: http://cloud.google.com/speech
-[rest-client]: https://developers.google.com/api-client-library/python/
-[grpc]: http://grpc.io
-
-
-Speech API key from Google.
-Internet access in order to contact google and get the speech data.
-
-** Optional/Highly experimental **
-speex         patent-free audio compression format designed for speech.
-              works only with patched speex encoder that supports
-              MIME "x-speex-with-header-byte"
-              https://github.com/zaf/Speex-with-header-bytes
-
-------------
-Installation
-------------
 To install copy speech-recog.agi to your agi-bin directory.
 Usually this is /var/lib/asterisk/agi-bin/
 To make sure check your /etc/asterisk/asterisk.conf file
+`Asterisk*CLI> core show settings`
 
 -----
 Usage
