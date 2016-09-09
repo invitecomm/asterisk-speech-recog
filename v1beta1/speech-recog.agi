@@ -18,25 +18,29 @@
 # limitations under the License.
 """AGI script that renders speech to text using Google Cloud Speech API
  using the REST API."""
+ 
+# [START USER SETTINGS]
+# ** Permissions of file are IMPORTANT **
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/google_voice_api.json'
+# [END USER SETTINGS]
 
 # [START import_libraries]
 import base64
-import json
-
-import os
-from asterisk.agi import *
-import logging
-import tempfile
-import threading
-
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
-
-from googleapiclient import discovery
 import httplib2
+import json
+import logging
+import os
+import sys
+import tempfile
+
+from asterisk.agi import *
+from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 # [END import_libraries]
+
+# [ENFORCE utf-8]
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 # [START authenticating]
 DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
@@ -44,9 +48,6 @@ DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
 
 # Application default credentials provided by env variable
 # GOOGLE_APPLICATION_CREDENTIALS
-
-# ** Permissions of file are IMPORTANT **
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/google_voice_api.json'
 
 def get_speech_service():
     credentials = GoogleCredentials.get_application_default().create_scoped(
@@ -57,7 +58,6 @@ def get_speech_service():
     return discovery.build(
         'speech', 'v1beta1', http=http, discoveryServiceUrl=DISCOVERY_URL)
 # [END authenticating]
-
 
 def main(speech_file):
     """Transcribe the given audio file.
@@ -71,11 +71,7 @@ def main(speech_file):
         # request.
         speech_content = base64.b64encode(speech.read())
 	
-    agi.verbose('PROCESSING')
-	#threading.Thread(target=moh_start).start()
-	#agi.execute('EXEC', 'MusicOnHold')
-	#agi.stream_file('/var/lib/asterisk/sounds/en/pls-hold-process-tx')
-	#agi.stream_file('/var/lib/asterisk/moh/macroform-cold_day')
+    #agi.verbose('PROCESSING')
     service = get_speech_service()
     service_request = service.speech().syncrecognize(
         body={
@@ -85,8 +81,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'ja-JP',  # a BCP-47 language tag 
-                # Working with: en-US/ja-JP
+                'languageCode': 'en-US',  # a BCP-47 language tag 
             },
             'audio': {
                 'content': speech_content.decode('UTF-8')
@@ -95,31 +90,22 @@ def main(speech_file):
     # [END construct_request]
     # [START send_request]
     response = service_request.execute()
-    # json.dumps(ensure_ascii=False) to disable unicode \uXXXX format
-    #print(json.dumps(response, ensure_ascii=False))
-    #return json.dumps(response, ensure_ascii=False)
-    #threading.Thread(target=moh_stop).start()
-    #agi.execute('EXEC', 'StopMusicOnHold')
     return response
     # [END send_request]
-    
-def moh_start():
-    agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
-    #agi.execute('EXEC', 'MusicOnHold')
 
-def moh_stop():
-    agi.execute('EXEC', 'StopMusicOnHold')
+# [START application]
 
-# [START run_application]
-    
-audiotest = '/var/lib/asterisk/sounds/en/one-moment-please.ulaw'    
+# Create Temporary File Name    
 temp = tempfile.NamedTemporaryFile()
 temp.close()
 
+# Start AGI
 agi = AGI()
 agi.answer()
-agi.verbose("python agi started")
+agi.verbose("Speech Recognition Started")
 
+
+# AGI Record Variables
 filename = temp.name
 format = 'ulaw'
 intkey = '#'
@@ -127,65 +113,29 @@ timeout = 20000
 beep = 'beep'
 offset = '0'
 silence = 's=10'
+
+# Using GENERIC agi.execute command.  
+# agi.record in pyst2 does not have silence detencion option.
+#
 agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
-
 # agi.record_file((filename), (format))
-#agi.verbose(temp.name + '.ulaw')
-#agi.verbose(filename)
 
-#moh_start()
-#ttt = 
-
-t1=threading.Thread(target = moh_start)
-t1.start()
-#start_new_thread(moh_start)
-#ttt.start()
-agi.verbose('NEXT')
+# Process Recorded Audio File
 response_data = main(temp.name + '.ulaw')
-moh_stop()
-#response_data = main(audiotest)
 
-
-logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
+# Extra Logging of JSON response
+logging.basicConfig(filename='/var/log/google_speeck_json.log',level=logging.DEBUG)
 logging.debug(json.dumps(response_data, ensure_ascii=False))
 
-#conf = []
-#text = []
-
-#data = json.loads(json.dumps(response_data, ensure_ascii=False))
-
-#for key, result in data.items():
-#	conf.append(result['confidence'])  
-#	text.append(result['transcript'])
-#	print key, result
-
+# Extract 'transcript' from JSON results
 string = response_data['results'][0]['alternatives'][0]['transcript']
-#string = 'VERBOSE "カタカナ" 1'
+# ENSURE utf-8
 res = string.encode('utf8', 'replace')
 
-#res.decode().encode('utf-8')
-#print('START')
-agi.verbose('%s' % res)
-#print(res)
-#print('NEXT')
-#type_info = type(res)
-#print(type_info)
-#print('DONE')
+# Pass Results to Asterisk Log
+agi.verbose('The text you just said is: %s' % res)
 
-
-#res = 
-#agi.verbose(u'PYTHON SUCKS: %s' % res )
-#print(type(res))
-
-#agi.verbose(text[0])
-#print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
-#print(text[0])
-
-#agi.verbose('temp:', temp)
-#agi.verbose(temp.name, '.ulaw')
-
-#agi.verbose('python agi ended')
+# Set ${RESPONSE} in the Asterisk Dial Plan
 agi.set_variable('RESPONSE', res)
 
-
-
+# [END application]
