@@ -7,14 +7,11 @@ microphone.
 
 Google Cloud Speech API
 
-------------
-Requirements
-------------
-Python          The Perl Programming Language
-pyst2		   The World-Wide Web library for Perl
-perl-libjson  Module for manipulating JSON-formatted data
-IO-Socket-SSL Perl module that implements an interface to SSL sockets.
-flac          Free Lossless Audio Codec
+## Requirements
+
+- Python          The Perl Programming Language
+- pyst2		   The World-Wide Web library for Perl
+- google speach API
 
 # Google Cloud Speech API Samples
 
