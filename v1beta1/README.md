@@ -24,7 +24,7 @@ To install, copy speech-recog.agi to your agi-bin directory.
 
 Usually this is /var/lib/asterisk/agi-bin/
 
-To make sure check your /etc/asterisk/asterisk.conf file or Asterisk settings:
+To verify the AGI Scripts directory check /etc/asterisk/asterisk.conf or Asterisk settings:
 
 `Asterisk*CLI> core show settings`
 
@@ -32,13 +32,17 @@ To make sure check your /etc/asterisk/asterisk.conf file or Asterisk settings:
 
 To install pyst2, simply run:
 
-'pip install pyst2'
+`pip install pyst2`
 
 This will install the latest version of the library automatically.
 
+  - pyst2 support ASCII by default.
+
 ### Google Cloud Speech REST API
 
+Follow the installation instructions on the [Google Cloud Speech REST API](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client) page.
 
+`pip install -r requirements.txt`
 
 -----
 Usage
