@@ -1,14 +1,12 @@
-# Speech recognition script for Asterisk
+# Speech Recognition Script for Asterisk
 
-These samples show how to use the [Google Cloud Speech API][speech-api]
-to transcribe audio files, as well as live audio from your computer's
-microphone.
+These example shows how to use the [Google Cloud Speech API][speech-api] to render speech
+to text and return it back to the dialplan as an Asterisk channel variable.
 
 This source code is different from the original version:
 
 - [ ] The Perl Programming Language
 - [x] The **Python** Programming Language
-
 
 Google Cloud Speech API
 
@@ -17,6 +15,7 @@ Google Cloud Speech API
 - [Python](https://www.python.org/) - The Python Programming Language
 - [pyst2](https://github.com/rdegges/pyst2) - Python Libraries for Asterisk
 - [Google Cloud Speech REST API](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client)
+-- [Cloud Speech API credentials](https://console.cloud.google.com)
 
 # Google Cloud Speech API Samples
 
