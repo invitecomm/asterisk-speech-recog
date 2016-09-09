@@ -18,11 +18,6 @@
 # limitations under the License.
 """AGI script that renders speech to text using Google Cloud Speech API
  using the REST API."""
- 
-# [START USER SETTINGS]
-# ** Permissions of file are IMPORTANT **
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/google_voice_api.json'
-# [END USER SETTINGS]
 
 # [START import_libraries]
 import base64
@@ -37,6 +32,11 @@ from asterisk.agi import *
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 # [END import_libraries]
+
+# [START USER SETTINGS]
+# ** Permissions of file are IMPORTANT **
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/google_voice_api.json'
+# [END USER SETTINGS]
 
 # [ENFORCE utf-8]
 reload(sys)
