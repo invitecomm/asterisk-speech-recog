@@ -16,7 +16,7 @@ Google Cloud Speech API
 
 - Python          The Perl Programming Language
 - pyst2		   The World-Wide Web library for Perl
-- [Google Cloud Speech REST API][GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client]
+- [Google Cloud Speech REST API](GoogleCloudPlatform/python-docs-samples/tree/master/speech/api-client)
 
 # Google Cloud Speech API Samples
 
