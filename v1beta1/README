@@ -1,0 +1,191 @@
+==============================================
+    Speech recognition script for Asterisk
+==============================================
+
+This script makes use of Google's Speech API in order to render speech
+to text and return it back to the dialplan as an asterisk channel variable.
+
+------------
+Requirements
+------------
+Perl          The Perl Programming Language
+perl-libwww   The World-Wide Web library for Perl
+perl-libjson  Module for manipulating JSON-formatted data
+IO-Socket-SSL Perl module that implements an interface to SSL sockets.
+flac          Free Lossless Audio Codec
+
+Speech API key from Google.
+Internet access in order to contact google and get the speech data.
+
+** Optional/Highly experimental **
+speex         patent-free audio compression format designed for speech.
+              works only with patched speex encoder that supports
+              MIME "x-speex-with-header-byte"
+              https://github.com/zaf/Speex-with-header-bytes
+
+------------
+Installation
+------------
+To install copy speech-recog.agi to your agi-bin directory.
+Usually this is /var/lib/asterisk/agi-bin/
+To make sure check your /etc/asterisk/asterisk.conf file
+
+-----
+Usage
+-----
+agi(speech-recog.agi,[lang],[timeout],[intkey],[NOBEEP])
+Records from the current channel until 2 seconds of silence are detected
+(this can be set by the user by the 'timeout' argument, -1 for no timeout) or the
+interrupt key (# by default) is pressed. If NOBEEP is set, no beep sound is played
+back to the user to indicate the start of the recording.
+The recorded sound is send over to googles speech recognition service and the
+returned text string is assigned as the value of the channel variable 'utterance'.
+The scripts sets the following channel variables:
+
+utterance  : The generated text string.
+confidence : A value between 0 and 1 indicating the probability of a correct recognition.
+             Values bigger than 0.95 usually mean that the resulted text is correct.
+
+In case of an unxpected error both these variables are set to '-1'.
+
+--------
+Examples
+--------
+sample dialplan code for your extensions.conf
+
+;Simple speech recognition
+exten => 1234,1,Answer()
+exten => 1234,n,agi(speech-recog.agi,en-US)
+exten => 1234,n,Verbose(1,The text you just said is: ${utterance})
+exten => 1234,n,Verbose(1,The probability to be right is: ${confidence})
+exten => 1234,n,Hangup()
+
+;Speech recognition demo also using googletts.agi for text to speech synthesis:
+exten => 1235,1,Answer()
+exten => 1235,n,agi(googletts.agi,"Say something in English, when done press the pound key.",en)
+exten => 1235,n(record),agi(speech-recog.agi,en-US)
+exten => 1235,n,Verbose(1,Script returned: ${confidence} , ${utterance})
+
+;Check the probability of a successful recognition:
+exten => 1235,n,GotoIf($["${confidence}" > "0.8"]?playback:retry)
+
+;Playback the text
+exten => 1235,n(playback),agi(googletts.agi,"The text you just said was...",en)
+exten => 1235,n,agi(googletts.agi,"${utterance}",en)
+exten => 1235,n,goto(end)
+
+;Retry in case speech recognition wasn't successful:
+exten => 1235,n(retry),agi(googletts.agi,"Can you please repeat more clearly?",en)
+exten => 1235,n,goto(record)
+
+exten => 1235,n(fail),agi(googletts.agi,"Failed to get speech data.",en)
+exten => 1235,n(end),Hangup()
+
+;Voice dialing example
+exten => 1236,1,Answer()
+exten => 1236,n,agi(googletts.agi,"PLease say the number you want to dial.",en)
+exten => 1236,n(record),agi(speech-recog.agi,en-US)
+exten => 1236,n,GotoIf($["${confidence}" > "0.8"]?success:retry)
+
+exten => 1236,n(success),goto(${utterance},1)
+
+exten => 1236,n(retry),agi(googletts.agi,"Can you please repeat?",en)
+exten => 1236,n,goto(record)
+
+Under the folder wolfram you can find a sample agi script that in combination with speech-recog.agi
+sends queries to WolframAlpha and returs the answers as a dialplan variable. See wolfram/README for
+details and dialplan examples.
+
+-------------------
+Supported Languages
+-------------------
+[['Afrikaans',       ['af-ZA']],
+ ['Bahasa Indonesia',['id-ID']],
+ ['Bahasa Melayu',   ['ms-MY']],
+ ['Català',          ['ca-ES']],
+ ['Čeština',         ['cs-CZ']],
+ ['Deutsch',         ['de-DE']],
+ ['English',         ['en-AU', 'Australia'],
+                     ['en-CA', 'Canada'],
+                     ['en-IN', 'India'],
+                     ['en-NZ', 'New Zealand'],
+                     ['en-ZA', 'South Africa'],
+                     ['en-GB', 'United Kingdom'],
+                     ['en-US', 'United States']],
+ ['Español',         ['es-AR', 'Argentina'],
+                     ['es-BO', 'Bolivia'],
+                     ['es-CL', 'Chile'],
+                     ['es-CO', 'Colombia'],
+                     ['es-CR', 'Costa Rica'],
+                     ['es-EC', 'Ecuador'],
+                     ['es-SV', 'El Salvador'],
+                     ['es-ES', 'España'],
+                     ['es-US', 'Estados Unidos'],
+                     ['es-GT', 'Guatemala'],
+                     ['es-HN', 'Honduras'],
+                     ['es-MX', 'México'],
+                     ['es-NI', 'Nicaragua'],
+                     ['es-PA', 'Panamá'],
+                     ['es-PY', 'Paraguay'],
+                     ['es-PE', 'Perú'],
+                     ['es-PR', 'Puerto Rico'],
+                     ['es-DO', 'República Dominicana'],
+                     ['es-UY', 'Uruguay'],
+                     ['es-VE', 'Venezuela']],
+ ['Euskara',         ['eu-ES']],
+ ['Français',        ['fr-FR']],
+ ['Galego',          ['gl-ES']],
+ ['Hrvatski',        ['hr_HR']],
+ ['IsiZulu',         ['zu-ZA']],
+ ['Íslenska',        ['is-IS']],
+ ['Italiano',        ['it-IT', 'Italia'],
+                     ['it-CH', 'Svizzera']],
+ ['Magyar',          ['hu-HU']],
+ ['Nederlands',      ['nl-NL']],
+ ['Norsk bokmål',    ['nb-NO']],
+ ['Polski',          ['pl-PL']],
+ ['Português',       ['pt-BR', 'Brasil'],
+                     ['pt-PT', 'Portugal']],
+ ['Română',          ['ro-RO']],
+ ['Slovenčina',      ['sk-SK']],
+ ['Suomi',           ['fi-FI']],
+ ['Svenska',         ['sv-SE']],
+ ['Türkçe',          ['tr-TR']],
+ ['български',       ['bg-BG']],
+ ['Pусский',         ['ru-RU']],
+ ['Српски',          ['sr-RS']],
+ ['한국어',            ['ko-KR']],
+ ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
+                     ['cmn-Hans-HK', '普通话 (香港)'],
+                     ['cmn-Hant-TW', '中文 (台灣)'],
+                     ['yue-Hant-HK', '粵語 (香港)']],
+ ['日本語',           ['ja-JP']],
+ ['Lingua latīna',   ['la']]];
+
+-----------------------
+Security Considerations
+-----------------------
+This script contacts googles' servers in order send the recorded voice data and get back
+the resulted text. The script uses SSL by default to encrypt all the traffic between
+your pbx and google servers so no 3rd party can eavesdrop your communication, but your
+voice data will be available to Google under a not yet defined policy.
+
+------------
+Tiny version
+------------
+The '-tiny' suffixed scripts use the HTTP::Tiny perl module instead of LWP::UserAgent and
+JSON::Tiny instead of JSON. This makes them a lot faster when run in small embedded systems
+or boards like the Raspberry pi. They can be used as an in-place replacement of the normal
+scripts and expose the same interface/cli args. To use them just make sure
+you have HTTP::Tiny and JSON::Tinyinstalled.
+
+-------
+License
+-------
+The speech-recog script for asterisk is distributed under the GNU General Public
+License v2. See COPYING for details.
+
+--------
+Homepage
+--------
+http://zaf.github.com/asterisk-speech-recog/

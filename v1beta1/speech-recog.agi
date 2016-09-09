@@ -133,8 +133,11 @@ agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), 
 #agi.verbose(temp.name + '.ulaw')
 #agi.verbose(filename)
 
-moh_start()
+#moh_start()
 #ttt = 
+
+t1=threading.Thread(target = moh_start)
+t1.start()
 #start_new_thread(moh_start)
 #ttt.start()
 agi.verbose('NEXT')
