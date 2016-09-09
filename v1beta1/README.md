@@ -47,69 +47,19 @@ Follow the installation instructions on the [Google Cloud Speech REST API](https
 ----
 
 ## Usage
-`agi(speech-recog.agi,[lang],[timeout],[intkey],[NOBEEP])`
+`agi(speech-recog.agi)`
 
-Records from the current channel until 2 seconds of silence are detected
-(this can be set by the user by the 'timeout' argument, -1 for no timeout) or the
-interrupt key (# by default) is pressed. If NOBEEP is set, no beep sound is played
-back to the user to indicate the start of the recording.
-The recorded sound is send over to googles speech recognition service and the
-returned text string is assigned as the value of the channel variable 'utterance'.
-The scripts sets the following channel variables:
+### Examples
 
-utterance  : The generated text string.
-confidence : A value between 0 and 1 indicating the probability of a correct recognition.
-             Values bigger than 0.95 usually mean that the resulted text is correct.
-
-In case of an unxpected error both these variables are set to '-1'.
-
---------
-Examples
---------
 sample dialplan code for your extensions.conf
 
+```
 ;Simple speech recognition
 exten => 1234,1,Answer()
-exten => 1234,n,agi(speech-recog.agi,en-US)
-exten => 1234,n,Verbose(1,The text you just said is: ${utterance})
-exten => 1234,n,Verbose(1,The probability to be right is: ${confidence})
-exten => 1234,n,Hangup()
-
-;Speech recognition demo also using googletts.agi for text to speech synthesis:
-exten => 1235,1,Answer()
-exten => 1235,n,agi(googletts.agi,"Say something in English, when done press the pound key.",en)
-exten => 1235,n(record),agi(speech-recog.agi,en-US)
-exten => 1235,n,Verbose(1,Script returned: ${confidence} , ${utterance})
-
-;Check the probability of a successful recognition:
-exten => 1235,n,GotoIf($["${confidence}" > "0.8"]?playback:retry)
-
-;Playback the text
-exten => 1235,n(playback),agi(googletts.agi,"The text you just said was...",en)
-exten => 1235,n,agi(googletts.agi,"${utterance}",en)
-exten => 1235,n,goto(end)
-
-;Retry in case speech recognition wasn't successful:
-exten => 1235,n(retry),agi(googletts.agi,"Can you please repeat more clearly?",en)
-exten => 1235,n,goto(record)
-
-exten => 1235,n(fail),agi(googletts.agi,"Failed to get speech data.",en)
-exten => 1235,n(end),Hangup()
-
-;Voice dialing example
-exten => 1236,1,Answer()
-exten => 1236,n,agi(googletts.agi,"PLease say the number you want to dial.",en)
-exten => 1236,n(record),agi(speech-recog.agi,en-US)
-exten => 1236,n,GotoIf($["${confidence}" > "0.8"]?success:retry)
-
-exten => 1236,n(success),goto(${utterance},1)
-
-exten => 1236,n(retry),agi(googletts.agi,"Can you please repeat?",en)
-exten => 1236,n,goto(record)
-
-Under the folder wolfram you can find a sample agi script that in combination with speech-recog.agi
-sends queries to WolframAlpha and returs the answers as a dialplan variable. See wolfram/README for
-details and dialplan examples.
+ same => n,agi(speech-recog.agi)
+ same => n,Verbose(1,The text you just said is: ${RESPONSE})
+ same => n,Hangup()
+```
 
 -------------------
 Supported Languages
