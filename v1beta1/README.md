@@ -20,9 +20,10 @@ Google Cloud Speech API
 
 ## Installation
 
-To install copy speech-recog.agi to your agi-bin directory.
-Usually this is /var/lib/asterisk/agi-bin/
+To install, copy speech-recog.agi to your agi-bin directory.  Usually this is /var/lib/asterisk/agi-bin/
+
 To make sure check your /etc/asterisk/asterisk.conf file
+
 `Asterisk*CLI> core show settings`
 
 -----
