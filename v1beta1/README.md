@@ -4,6 +4,11 @@ These samples show how to use the [Google Cloud Speech API][speech-api]
 to transcribe audio files, as well as live audio from your computer's
 microphone.
 
+But I have to admit, tasks lists are my favorite:
+
+- [ ] The Perl Programming Language
+- [x] The **Python** Programming Language
+
 
 Google Cloud Speech API
 
